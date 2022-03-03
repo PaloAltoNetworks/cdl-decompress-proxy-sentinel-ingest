@@ -1,0 +1,4 @@
+requests==2.27.1
+Flask==2.0.2
+gunicorn[gevent]
+gevent
