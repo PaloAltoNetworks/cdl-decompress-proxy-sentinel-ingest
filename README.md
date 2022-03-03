@@ -1,4 +1,4 @@
-# Proxy template to decompress data from CDL for ingestiong into Cortex Data Lake
+# Proxy template to decompress data from CDL for ingestion into Azure Sentinel
 
 ## Deploy a Python (Flask) web app to Azure App Service - Sample Application
 
