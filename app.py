@@ -20,7 +20,7 @@ SHARED_KEY = os.environ.get('SHARED_KEY')
 
 
 if (WORKSPACE_ID is None or SHARED_KEY is None):
-    raise Exception("Please add azure sentinel customer_id and shared_key to azure key vault/application settings of web app") 
+    raise Exception("Please add Microsoft Sentinel (Log Analytics) workspace WORKSPACE_ID and SHARED_KEY to the Web App - Configuration (Application Settings). Consider using an Azure Key Vault (https://tinyurl.com/4pfdb3ds)") 
 
 
 BASIC_AUTH = base64.b64encode("{}:{}".format(WORKSPACE_ID, SHARED_KEY).encode()).decode("utf-8")
@@ -106,7 +106,7 @@ def func():
         if basic_auth_header == '':
             logging.error("UnAuthorized Basic header")
             raise UnAuthorizedException()   
-        log_type = request.headers.get(LOG_TYPE)
+        log_type = "PrismaAccess_"+request.headers.get(LOG_TYPE).capitalize()
         xms_date = ", ".join([each.strip() for each in request.headers.get('x-ms-date').split(",")]).replace("UTC", "GMT")
         headers = {
              'Content-Type': 'application/json; charset=UTF-8',
